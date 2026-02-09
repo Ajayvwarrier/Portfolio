@@ -1,0 +1,110 @@
+<nav class="navbar">
+  <div class="container">
+
+    <!-- BRAND -->
+    <div class="navbar-brand">
+      <a routerLink="/" class="logo">
+        <span class="logo-text">AJAY V WARRIER</span>
+        <span class="logo-badge">Angular Developer</span>
+      </a>
+    </div>
+
+    <!-- MENU -->
+    <div class="navbar-menu" [class.active]="isMenuOpen">
+      
+      <!-- 🔥 ROUTER LINKS HERE -->
+      <ul class="nav-links">
+        <li>
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link"
+            (click)="isMenuOpen = false"
+          >
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/about"
+            routerLinkActive="active"
+            class="nav-link"
+            (click)="isMenuOpen = false"
+          >
+            About
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/projects"
+            routerLinkActive="active"
+            class="nav-link"
+            (click)="isMenuOpen = false"
+          >
+            Projects
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/skills"
+            routerLinkActive="active"
+            class="nav-link"
+            (click)="isMenuOpen = false"
+          >
+            Skills
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/contact"
+            routerLinkActive="active"
+            class="nav-link"
+            (click)="isMenuOpen = false"
+          >
+            Contact
+          </a>
+        </li>
+      </ul>
+
+      <!-- ACTIONS -->
+      <div class="nav-actions">
+        <a
+          href="assets/cv/Ajay_V_Warrier_CV.pdf"
+          download="Ajay_V_Warrier_CV"
+          class="btn-download"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download CV
+        </a>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU BUTTON -->
+    <button
+      class="mobile-menu-btn"
+      (click)="toggleMenu()"
+      [class.active]="isMenuOpen"
+    >
+      <span class="menu-icon"></span>
+      <span class="menu-icon"></span>
+      <span class="menu-icon"></span>
+    </button>
+
+  </div>
+</nav>

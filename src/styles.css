@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+/* Reset and Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Remove any default white backgrounds */
+app-root {
+  display: block;
+  min-height: 100vh;
+}
+
+/* Make sure your hero section fills the screen */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  padding: 0;
+  margin: 0;
+}
+
+/* Container adjustments */
+.container {
+  max-width: 100%;
+  padding: 2rem 1rem;
+  margin: 0 auto;
+}
+
+/* If you have app.component.css, add these styles */
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}

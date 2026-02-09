@@ -1,0 +1,295 @@
+<section class="projects-section">
+  <div class="container">
+    <div class="projects-header">
+      <div class="badge">My Work</div>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">
+        A showcase of my recent work and personal projects that demonstrate my skills
+        and passion for building exceptional web applications.
+      </p>
+    </div>
+
+    <div class="projects-actions">
+      <div class="project-filters">
+        <button 
+          class="filter-btn" 
+          [class.active]="activeFilter === 'all'"
+          (click)="setActiveFilter('all')"
+        >
+          All Projects
+        </button>
+        <button 
+          class="filter-btn" 
+          [class.active]="activeFilter === 'angular'"
+          (click)="setActiveFilter('angular')"
+        >
+          Angular
+        </button>
+        <button 
+          class="filter-btn" 
+          [class.active]="activeFilter === 'javascript'"
+          (click)="setActiveFilter('javascript')"
+        >
+          JavaScript
+        </button>
+        <button 
+          class="filter-btn" 
+          [class.active]="activeFilter === 'fullstack'"
+          (click)="setActiveFilter('fullstack')"
+        >
+          Full Stack
+        </button>
+      </div>
+      
+      <div class="add-project-btn" (click)="openAddProjectModal()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Add Project
+      </div>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card" 
+           *ngFor="let project of filteredProjects"
+           [class.featured]="project.featured"
+           (mouseenter)="project.hover = true"
+           (mouseleave)="project.hover = false">
+        
+        <div class="project-image">
+          <div class="image-placeholder" [style.background]="project.color">
+            <div class="project-badge" *ngIf="project.featured">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Featured
+            </div>
+            <div class="image-content">
+              <span class="project-initials">{{ getInitials(project.name) }}</span>
+            </div>
+          </div>
+          <div class="project-overlay" *ngIf="project.hover">
+            <div class="overlay-actions">
+              <button class="action-btn view-btn" (click)="viewProjectDetails(project)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                View Details
+              </button>
+              <button class="action-btn edit-btn" (click)="editProject(project)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M18.5 2.5C18.8978 2.10217 19.4374 1.87868 20 1.87868C20.5626 1.87868 21.1022 2.10217 21.5 2.5C21.8978 2.89782 22.1213 3.43739 22.1213 4C22.1213 4.56261 21.8978 5.10217 21.5 5.5L12 15L8 16L9 12L18.5 2.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button class="action-btn delete-btn" (click)="confirmDeleteProject(project)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 6H5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-title">{{ project.name }}</h3>
+            <div class="project-status" [class]="'status-' + project.status">
+              {{ project.status }}
+            </div>
+          </div>
+          
+          <p class="project-desc">{{ project.desc }}</p>
+          
+          <div class="project-meta">
+            <div class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>{{ project.year }}</span>
+            </div>
+            <div class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M2 3H8C9.06087 3 10.0783 3.42143 10.8284 4.17157C11.5786 4.92172 12 5.93913 12 7V21C12 20.2044 11.6839 19.4413 11.1213 18.8787C10.5587 18.3161 9.79565 18 9 18H2V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22 3H16C14.9391 3 13.9217 3.42143 13.1716 4.17157C12.4214 4.92172 12 5.93913 12 7V21C12 20.2044 12.3161 19.4413 12.8787 18.8787C13.4413 18.3161 14.2044 18 15 18H22V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>{{ project.type }}</span>
+            </div>
+          </div>
+
+          <div class="project-tech">
+            <span class="tech-tag" *ngFor="let tech of project.tech">
+              {{ tech }}
+            </span>
+          </div>
+
+          <div class="project-actions">
+            <a *ngIf="project.liveUrl" [href]="project.liveUrl" target="_blank" class="project-btn live-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M18 13V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V8C3 7.46957 3.21071 6.96086 3.58579 6.58579C3.96086 6.21071 4.46957 6 5 6H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15 3H21V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Live Demo
+            </a>
+            <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" class="project-btn github-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              Code
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div class="empty-state" *ngIf="filteredProjects.length === 0">
+        <div class="empty-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 9H9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>No Projects Found</h3>
+        <p>Add your first project using the "Add Project" button above.</p>
+        <button class="btn btn-primary" (click)="openAddProjectModal()">
+          Add Your First Project
+        </button>
+      </div>
+    </div>
+
+    <!-- Project Details Modal -->
+    <div class="modal-overlay" *ngIf="selectedProject" (click)="closeProjectDetails()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h3 class="modal-title">{{ selectedProject.name }}</h3>
+          <button class="modal-close" (click)="closeProjectDetails()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="project-detail-content">
+            <div class="detail-image" [style.background]="selectedProject.color">
+              <span class="detail-initials">{{ getInitials(selectedProject.name) }}</span>
+            </div>
+            <div class="detail-info">
+              <div class="detail-item">
+                <strong>Description:</strong>
+                <p>{{ selectedProject.desc }}</p>
+              </div>
+              <div class="detail-item">
+                <strong>Technologies:</strong>
+                <div class="detail-tech">
+                  <span class="tech-badge" *ngFor="let tech of selectedProject.tech">
+                    {{ tech }}
+                  </span>
+                </div>
+              </div>
+              <div class="detail-item">
+                <strong>Project Type:</strong>
+                <span>{{ selectedProject.type }}</span>
+              </div>
+              <div class="detail-item">
+                <strong>Year:</strong>
+                <span>{{ selectedProject.year }}</span>
+              </div>
+              <div class="detail-item">
+                <strong>Status:</strong>
+                <span [class]="'status-badge status-' + selectedProject.status">
+                  {{ selectedProject.status }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add/Edit Project Modal -->
+    <div class="modal-overlay" *ngIf="showProjectModal" (click)="closeAddProjectModal()">
+      <div class="modal-content project-form-modal" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h3 class="modal-title">{{ isEditing ? 'Edit Project' : 'Add New Project' }}</h3>
+          <button class="modal-close" (click)="closeAddProjectModal()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="project-form" (ngSubmit)="saveProject()">
+            <div class="form-group">
+              <label>Project Name</label>
+              <input type="text" [(ngModel)]="newProject.name" name="name" required class="form-input">
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea [(ngModel)]="newProject.desc" name="desc" required class="form-textarea"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Technologies (comma separated)</label>
+              <input type="text" [(ngModel)]="techInput" name="tech" class="form-input" placeholder="Angular, TypeScript, CSS">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Project Type</label>
+                <select [(ngModel)]="newProject.type" name="type" class="form-select">
+                  <option value="Personal Project">Personal Project</option>
+                  <option value="Client Work">Client Work</option>
+                  <option value="Open Source">Open Source</option>
+                  <option value="Enterprise">Enterprise</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Status</label>
+                <select [(ngModel)]="newProject.status" name="status" class="form-select">
+                  <option value="completed">Completed</option>
+                  <option value="in-progress">In Progress</option>
+                  <option value="planned">Planned</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Year</label>
+                <input type="number" [(ngModel)]="newProject.year" name="year" class="form-input" min="2000" max="2030">
+              </div>
+              <div class="form-group">
+                <label>Featured Project</label>
+                <label class="checkbox-label">
+                  <input type="checkbox" [(ngModel)]="newProject.featured" name="featured">
+                  <span class="checkbox-custom"></span>
+                  Mark as Featured
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Live URL (optional)</label>
+              <input type="url" [(ngModel)]="newProject.liveUrl" name="liveUrl" class="form-input" placeholder="https://">
+            </div>
+            <div class="form-group">
+              <label>GitHub URL (optional)</label>
+              <input type="url" [(ngModel)]="newProject.githubUrl" name="githubUrl" class="form-input" placeholder="https://github.com/">
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn btn-secondary" (click)="closeAddProjectModal()">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary">
+                {{ isEditing ? 'Update Project' : 'Add Project' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
