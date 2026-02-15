@@ -138,6 +138,24 @@
   transform: translateX(4px);
 }
 
+.hero-social {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.hero-social a {
+  color: #8b9cff;
+  font-size: 22px;
+  transition: 0.3s ease;
+}
+
+.hero-social a:hover {
+  color: #ffffff;
+  transform: translateY(-5px);
+}
+
+
 .tech-stack {
   display: flex;
   flex-direction: column;
