@@ -3,13 +3,15 @@
 }
 
 .hero-right {
-  width: 450px;
+  width: 100%;
+  max-width: 450px;
   height: 350px;
+  margin: 0 auto;   /* center */
   position: relative;
   cursor: crosshair;
   overflow: hidden;
- 
 }
+
 
 /* Create multiple molecules */
 .hero-right::before,
@@ -469,23 +471,39 @@
 
 /* ================= RESPONSIVE DESIGN ================= */
 
+/* Default hero content alignment */
 .hero-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-/* Tablets */
+/* Prevent hero top gap issue */
+.hero {
+  padding-top: 2rem;
+}
+
+/* ================= TABLETS (1024px) ================= */
 @media (max-width: 1024px) {
 
   .container {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: unset !important;
     gap: 3rem;
     text-align: center;
   }
 
   .hero-content {
     align-items: center;
+  }
+
+  .hero-right {
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto 0 auto;
   }
 
   .hero-social {
@@ -509,7 +527,31 @@
   }
 }
 
-/* Mobile */
+
+/* ================= MOBILE (768px) ================= */
+@media (max-width: 768px) {
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-right {
+    margin-top: 2rem;
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .hero-social {
+    position: static;   /* remove absolute */
+    margin-bottom: 1.5rem;
+    justify-content: center;
+  }
+}
+
+
+/* ================= SMALL MOBILE (640px) ================= */
 @media (max-width: 640px) {
 
   .hero {
