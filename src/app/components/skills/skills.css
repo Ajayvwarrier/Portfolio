@@ -93,7 +93,7 @@
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* 3 boxes: left, center, right */
   gap: 1.5rem;
   margin-bottom: 4rem;
 }
@@ -102,7 +102,7 @@
   background: rgba(30, 41, 59, 0.7);
   border: 1px solid #334155;
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: 0.9rem;     /* before 1.5rem */
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -140,12 +140,16 @@
 .skill-icon {
   width: 48px;
   height: 48px;
-  border-radius: 0.75rem;
+  border-radius: 0.85rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(15, 23, 42, 0.8);
   flex-shrink: 0;
+}
+
+.tech-icon svg {
+  color: #f7df1e;   /* JS yellow */
 }
 
 .skill-info {
@@ -299,7 +303,7 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
   .skills-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* Tablet → 2 columns */
   }
 }
 
@@ -307,24 +311,28 @@
   .skills-section {
     padding: 3rem 0;
   }
-  
+
   .section-title {
     font-size: 2.25rem;
   }
-  
+
   .category-tabs {
     gap: 0.25rem;
   }
-  
+
   .category-tab {
     padding: 0.5rem 1rem;
     font-size: 0.75rem;
   }
-  
+
   .summary-card {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr; /* Mobile → 1 column */
   }
 }
 
@@ -332,11 +340,7 @@
   .section-title {
     font-size: 2rem;
   }
-  
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-  
+
   .skill-card {
     padding: 1.25rem;
   }

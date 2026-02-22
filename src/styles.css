@@ -7,9 +7,7 @@
 html {
   scroll-behavior: smooth;
 }
-section {
-  scroll-margin-top: 90px; /* your navbar height */
-}
+
 
 html, body {
   height: 100%;
