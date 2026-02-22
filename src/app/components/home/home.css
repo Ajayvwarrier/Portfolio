@@ -173,7 +173,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 1rem 2rem 6rem;
+  /* padding: 1rem 2rem 6rem; */
   position: relative;
   overflow: hidden;
 }
@@ -478,10 +478,7 @@
   align-items: flex-start;
 }
 
-/* Prevent hero top gap issue */
-.hero {
-  padding-top: 2rem;
-}
+
 
 /* ================= TABLETS (1024px) ================= */
 @media (max-width: 1024px) {
