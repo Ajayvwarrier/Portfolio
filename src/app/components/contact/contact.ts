@@ -46,4 +46,10 @@ export class ContactComponent {
     this.contactForm.reset();
     this.isSubmitted = false;
   }
-}
+
+   copyEmail() {
+    const email = "warrierajay99@gmail.com";
+    navigator.clipboard.writeText(email);
+    alert("Email copied!");
+  }
+  }

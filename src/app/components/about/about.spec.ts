@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AboutComponent } from './about';
 
-import { About } from './about';
-
-describe('About', () => {
-  let component: About;
-  let fixture: ComponentFixture<About>;
+describe('AboutComponent', () => {
+  let component: AboutComponent;
+  let fixture: ComponentFixture<AboutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [About]
+      declarations: [AboutComponent] // Changed from 'imports' to 'declarations'
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(About);
+    fixture = TestBed.createComponent(AboutComponent); // Fixed: removed space
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
