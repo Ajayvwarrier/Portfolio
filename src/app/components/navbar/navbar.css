@@ -81,6 +81,57 @@
   padding: 0;
 }
 
+/* ✅ FIX 1: .nav-link positioning */
+.nav-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #3b82f6;
+}
+
+/* ✅ FIX 2: Remove old ::after (we're using .title-line now) */
+/* .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 1px;
+} */
+
+/* ✅ FIX 3: .title-line styles (outside media query) */
+.title-line {
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(135deg, #f8f8f8, #e5e1f0);
+  transition: width 0.3s ease;
+  margin-top: 4px;
+}
+
+/* Hover line */
+.nav-link:hover .title-line {
+  width: 100%;
+}
+
+/* Active click line (permanent) */
+.nav-link.active .title-line {
+  width: 100%;
+  height: 3px;  /* Thicker for active */
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
+
+
 .nav-link {
   color: #cbd5e1;
   text-decoration: none;
@@ -133,6 +184,7 @@
 } */
 
 /* MOBILE MENU */
+
 .mobile-menu-btn {
   display: none;
   background: none;
@@ -141,6 +193,8 @@
   padding: 0.5rem;
   flex-direction: column;
   gap: 4px;
+  justify-self: end;
+  margin-left: auto;
 }
 
 .menu-icon {
@@ -200,5 +254,53 @@
 
   .mobile-menu-btn.active .menu-icon:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* Tablet and Mobile Responsive */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: auto 1fr auto;  /* 🔥 Better grid for mobile */
+  }
+  
+  }
+
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 1rem;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 0.75rem 0;
+    text-align: center;
+  }
+
+  /* 🔥 Mobile menu button visible */
+  .mobile-menu-btn {
+    display: flex;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .logo {
+    font-size: 1rem;
   }
 }

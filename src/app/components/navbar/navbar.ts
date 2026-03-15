@@ -10,8 +10,14 @@ import { RouterModule } from '@angular/router';
 })
 export class NavbarComponent {
   isMenuOpen = false;
+   activeLink = '';
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+
+setActive(section: string) {
+    this.activeLink = section;
+    this.isMenuOpen = false; 
+}
 }

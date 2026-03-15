@@ -1,74 +1,58 @@
 <nav class="navbar">
   <div class="container">
 
-    <!-- BRAND -->
+    <!-- BRAND - leftside -->
     <div class="navbar-brand">
        <div class="logo">AW</div>
       <a routerLink="/" class="logo">       
       </a>
     </div>
 
-    <!-- MENU -->
+    <!-- MENU - Center (desktop) / Full width (mobile) -->
     <div class="navbar-menu" [class.active]="isMenuOpen">
       
       <!-- 🔥 ROUTER LINKS HERE -->
-      <ul class="nav-links">
-        <li>
-          <a
-            routerLink="/"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            class="nav-link"
-            (click)="isMenuOpen = false"
-          >
-            Home
-          </a>
-        </li>
 
-        <li>
-          <a
-            routerLink="/about"
-            routerLinkActive="active"
-            class="nav-link"
-            (click)="isMenuOpen = false"
-          >
-            About
-          </a>
-        </li>
-
-        <li>
-          <a
-            routerLink="/projects"
-            routerLinkActive="active"
-            class="nav-link"
-            (click)="isMenuOpen = false"
-          >
-            Projects
-          </a>
-        </li>
-
-        <li>
-          <a
-            routerLink="/skills"
-            routerLinkActive="active"
-            class="nav-link"
-            (click)="isMenuOpen = false"
-          >
-            Skills
-          </a>
-        </li>
-
-        <li>
-          <a
-            routerLink="/contact"
-            routerLinkActive="active"
-            class="nav-link"
-            (click)="isMenuOpen = false"
-          >
-            Contact
-          </a>
-        </li>
-      </ul>
+   <!-- ✅ FIX: Add (click) and [class.active] binding -->
+      <a href="#home" 
+         class="nav-link" 
+         (click)="setActive('home')" 
+         [class.active]="activeLink === 'home'">
+        Home 
+        <div class="title-line"></div>
+      </a>
+      
+      <a href="#about" 
+         class="nav-link" 
+         (click)="setActive('about')" 
+         [class.active]="activeLink === 'about'">
+        About 
+        <div class="title-line"></div>
+      </a>
+      
+      <a href="#skills" 
+         class="nav-link" 
+         (click)="setActive('skills')" 
+         [class.active]="activeLink === 'skills'">
+        Skills 
+        <div class="title-line"></div>
+      </a>
+      
+      <a href="#projects" 
+         class="nav-link" 
+         (click)="setActive('projects')" 
+         [class.active]="activeLink === 'projects'">
+        Projects 
+        <div class="title-line"></div>
+      </a>
+      
+      <a href="#contact" 
+         class="nav-link" 
+         (click)="setActive('contact')" 
+         [class.active]="activeLink === 'contact'">
+        Contact 
+        <div class="title-line"></div>
+      </a>
 
       <!-- ACTIONS -->
       <div class="nav-actions">
@@ -99,7 +83,7 @@
       class="mobile-menu-btn"
       (click)="toggleMenu()"
       [class.active]="isMenuOpen"
-    >
+      aria-label="Toggle menu">
       <span class="menu-icon"></span>
       <span class="menu-icon"></span>
       <span class="menu-icon"></span>
