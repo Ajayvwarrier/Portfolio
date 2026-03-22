@@ -85,17 +85,19 @@
 }
 
 .resume-btn{
-  display:inline-block;
+  display:inline-flex;
   margin-top:25px;
   padding:12px 25px;
-  background:white;
+  background:rgb(15, 40, 182);
   color:#5a3ec8;
   border-radius:30px;
   text-decoration:none;
   font-weight:600;
   transition:.3s;
+  cursor: pointer;
+  border: none;
 }
 
 .resume-btn:hover{
-  background:#eee;
+  background:#8a6c6c;
 }
