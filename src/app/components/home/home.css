@@ -684,11 +684,7 @@ section {
   .skills-grid {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
   }
-}
 
 @media (max-width: 480px) {
   .hero-title {

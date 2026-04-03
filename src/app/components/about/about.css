@@ -98,6 +98,29 @@
   border: none;
 }
 
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+
+  .about-content {
+    flex-direction: column;   /* stack */
+    text-align: left;
+  }
+
+  .about-image {
+    order: 1; /* image after heading */
+    margin-bottom: 20px;
+  }
+
+  .about-text {
+    order: 2;
+  }
+
+  .about-image img {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
 .resume-btn:hover{
   background:#8a6c6c;
 }
