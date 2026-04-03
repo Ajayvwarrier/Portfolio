@@ -165,6 +165,10 @@ section {
 
 .hero-content {
   animation: fadeInUp 0.8s ease-out;
+   display: flex;
+  flex-direction: column;
+  align-items: center;   /* ✅ center everything */
+  text-align: center; 
 }
 
 .hero-right {
@@ -198,6 +202,8 @@ section {
 .hero-title {
   font-size: 3.5rem;
   font-weight: 800;
+  text-align: center;
+  margin-left: 80px;
   line-height: 1.1;
   margin-bottom: 1.5rem;
   background: linear-gradient(135deg, #ffffff 0%, #fdfeff 100%);
@@ -207,7 +213,7 @@ section {
 }
 
 .highlight {
-  justify-content: center;
+  
   background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -315,11 +321,11 @@ section {
 /* SOCIAL CONTAINER BOX */
 .hero-social {
   position: absolute;
-  top: 60px;
-  right: 80px;
+  top: 65%;
+  left: 40px;
+  transform: translateY(-50%);
   display: flex;
-  gap: 18px;
-  z-index: 10;
+  gap: 28px;
 }
 
 .hero-social a {
@@ -577,7 +583,7 @@ section {
 
 
 /* Responsive Design */
-@media (max-width: 1024px) {/* ================= RESPONSIVE DESIGN ================= *//* Default hero content alignment */.hero-content {  display: flex;  flex-direction: column;  align-items: flex-start;}/* ================= TABLETS (1024px) ================= */
+@media (max-width: 1024px) {/* ================= RESPONSIVE DESIGN ================= *//* Default hero content alignment */.hero-content {  display: flex;  flex-direction: column;  align-items: center;  text-align: center; }/* ================= TABLETS (1024px) ================= */
   .container {
     grid-template-columns: 1fr;
     text-align: center;
@@ -613,6 +619,8 @@ section {
 @media (max-width: 768px) {
   
   .container {
+    grid-template-columns: 1fr;
+    justify-items: center;   /* 👈 THIS IS IMPORTANT */
   }
   .hamburger {
     display: flex;
@@ -638,7 +646,26 @@ section {
   }
 
   .hero-title {
-    font-size: 2.25rem;
+    font-size: 2.75rem;
+     transform: translateX(13px);
+  }
+
+ .hero-content {
+    align-items: center;   /* center everything */
+    text-align: center;
+  }
+
+  .hero-title {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+      .hero-title {
+    margin-bottom: 25px;
+  }
+
+  .hero-subtitle {
+    margin-top: 10px;
   }
 
   .hero-actions {
@@ -687,10 +714,11 @@ section {
   width: 120px;
   height: 120px;
   border: 3px solid rgba(255,255,255,0.4);
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
   border-radius: 50%;
   position: absolute;
-  top: 40px;
-  left: 55%;
+  top: 55px;
+  left: 75%;
   transform: translateX(-50%) rotateX(30deg) rotateZ(25deg);
   animation: ringSpin 6s linear infinite;
   z-index: 0;
@@ -713,4 +741,24 @@ section {
   100% {
     transform: translateX(-50%) rotateX(30deg) rotateZ(360deg);
   }
+}
+
+@media (max-width: 768px) {
+
+  .ring-animation {
+    top: 320px;          /* 👈 To bring the name to the top */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-title {
+    margin-left: 0;     /* 👈 center it on the mobile */
+  }
+
 }
