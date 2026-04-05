@@ -9,15 +9,26 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./navbar.css']
 })
 export class NavbarComponent {
+setActive(arg0: string) {
+throw new Error('Method not implemented.');
+}
   isMenuOpen = false;
    activeLink = '';
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+    scrollTo(section: string) {
+  const el = document.getElementById(section);
 
-setActive(section: string) {
-    this.activeLink = section;
-    this.isMenuOpen = false; 
+  if (el) {
+    (el as HTMLElement).scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+
+  this.activeLink = section;
+  this.isMenuOpen = false;
 }
 }

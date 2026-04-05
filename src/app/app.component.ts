@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar';
 import { FooterComponent } from './components/footer/footer';
 
@@ -14,15 +14,6 @@ import { FooterComponent } from './components/footer/footer';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-
+export class AppComponent {
   title = 'AJAY V WARRIER - Angular Developer Portfolio';
-
-  constructor(private router: Router) {}  // 👈 add this
-
-  ngOnInit() {
-    if (window.location.pathname === '/' || window.location.pathname === '') {
-      this.router.navigate(['/home']);   // 👈 add this
-    }
-  }
 }

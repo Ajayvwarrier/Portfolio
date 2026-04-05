@@ -4,7 +4,7 @@
     <!-- BRAND - leftside -->
     <div class="navbar-brand">
        <div class="logo">AW</div>
-      <a routerLink="/" class="logo">       
+      <a routerLink="/home" fragment="home" class="logo">       
       </a>
     </div>
 
@@ -14,46 +14,46 @@
       <!-- 🔥 ROUTER LINKS HERE -->
 
    <!-- ✅ FIX: Add (click) and [class.active] binding -->
-      <a href="#home" 
-         class="nav-link" 
-         (click)="setActive('home')" 
-         [class.active]="activeLink === 'home'">
-        Home 
-        <div class="title-line"></div>
-      </a>
-      
-      <a href="#about" 
-         class="nav-link" 
-         (click)="setActive('about')" 
-         [class.active]="activeLink === 'about'">
-        About 
-        <div class="title-line"></div>
-      </a>
-      
-      <a href="#skills" 
-         class="nav-link" 
-         (click)="setActive('skills')" 
-         [class.active]="activeLink === 'skills'">
-        Skills 
-        <div class="title-line"></div>
-      </a>
-      
-      <a href="#projects" 
-         class="nav-link" 
-         (click)="setActive('projects')" 
-         [class.active]="activeLink === 'projects'">
-        Projects 
-        <div class="title-line"></div>
-      </a>
-      
-      <a href="#contact" 
-         class="nav-link" 
-         (click)="setActive('contact')" 
-         [class.active]="activeLink === 'contact'">
-        Contact 
+      <a 
+        class="nav-link" 
+        (click)="scrollTo('home')" 
+        [class.active]="activeLink === 'home'">
+        Home
         <div class="title-line"></div>
       </a>
 
+      <a 
+        class="nav-link" 
+        (click)="scrollTo('about')" 
+        [class.active]="activeLink === 'about'">
+        About
+        <div class="title-line"></div>
+      </a>
+
+      <a 
+        class="nav-link" 
+        (click)="scrollTo('skills')" 
+        [class.active]="activeLink === 'skills'">
+        Skills
+        <div class="title-line"></div>
+      </a>
+
+      <a 
+        class="nav-link" 
+        (click)="scrollTo('projects')" 
+        [class.active]="activeLink === 'projects'">
+        Projects
+        <div class="title-line"></div>
+      </a>
+
+      <a 
+        class="nav-link" 
+        (click)="scrollTo('contact')" 
+        [class.active]="activeLink === 'contact'">
+        Contact
+        <div class="title-line"></div>
+      </a>
+      
       <!-- ACTIONS -->
       <div class="nav-actions">
         <!-- <a
