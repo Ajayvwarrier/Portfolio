@@ -128,6 +128,8 @@
 }
 
 .project-card {
+  display: flex;
+  flex-direction: column;
   background: rgba(30, 41, 59, 0.7);
   border: 1px solid #334155;
   border-radius: 1rem;
@@ -255,8 +257,16 @@
 }
 
 .project-content {
-  padding: 1.5rem;
+   padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  
 }
+.project-links {
+  margin-top: auto;
+}
+
 
 .project-header {
   display: flex;
@@ -370,8 +380,8 @@
 }
 
 .github-btn {
-  background: rgba(30, 41, 59, 0.7);
-  border: 1px solid #334155;
+  background: rgba(90, 62, 200, 1);
+  border: 1px solid #2266c6;
   color: #cbd5e1;
 }
 
